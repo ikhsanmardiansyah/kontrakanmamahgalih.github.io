@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' AND isset($_POST["login"])) {
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Kontrakan Mamah Galih</title>
+  <title>Kost Mamah Galih</title>
   <script type="text/javascript">
     var IsDraggable = <?=$is=(isset($_GET["page"])) ? (($_GET["page"] == "home") ? "false" : "true") : "false"?>;
   </script>
@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' AND isset($_POST["login"])) {
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.php" style="color: white;">KONTRAKAN MAMAH GALIH</a>
+        <a class="navbar-brand" href="index.php" style="color: white;">KOST MAMAH GALIH</a>
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <?php if (isset($_SESSION['is_logged'])): ?>
@@ -97,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' AND isset($_POST["login"])) {
   <div class="container">
     <hr>
     <footer>
-      <p>&copy; 2021 kost_mamahgalih.</p>
+      <p>&copy; 2021 kost_mamahgalih</p>
     </footer>
   </div> <!-- /container -->
   <script src="assets/js/bootstrap.min.js"></script>

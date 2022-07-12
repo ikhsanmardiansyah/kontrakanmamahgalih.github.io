@@ -79,7 +79,7 @@ if (isset($_GET['action']) AND $_GET['action'] == 'delete') {
 		        <div class="panel-body">
 		            <form action="<?=$_SERVER['REQUEST_URI']?>" method="POST" enctype="multipart/form-data">
 										<div class="form-group">
-											<label for="id_kost">Kost</label>
+											<label for="id_kost">Nama Penghuni Kost</label>
 											<select class="form-control" name="id_kost">
 												<option>---</option>
 												<?php $query = $connection->query("SELECT * FROM kost WHERE id_pemilik=$_SESSION[id]"); while ($data = $query->fetch_assoc()): ?>
@@ -88,11 +88,11 @@ if (isset($_GET['action']) AND $_GET['action'] == 'delete') {
 											</select>
 										</div>
 		                <div class="form-group">
-	                    <label for="judul">Judul</label>
+	                    <label for="judul">Nomor Kamar</label>
 	                    <input type="text" name="judul" class="form-control" <?= (!$update) ?: 'value="'.$row["judul"].'"' ?>>
 		                </div>
 		                <div class="form-group">
-	                    <label for="file">File Gambar</label>
+	                    <label for="file">Foto Kamar</label>
 	                    <input type="file" name="file" class="form-control">
 			                <?php if ($update): ?>
 												<span class="help-blokc text-danger">*) kosongkan jika tidak di ubah</span>
@@ -115,6 +115,7 @@ if (isset($_GET['action']) AND $_GET['action'] == 'delete') {
 		                    <tr>
 		                        <th>No</th>
 								<th>Nama</th>
+		                        <th>Kamar</th>
 		                        <th>Gambar</th>
 		                        <th></th>
 		                    </tr>
@@ -126,8 +127,8 @@ if (isset($_GET['action']) AND $_GET['action'] == 'delete') {
 		                        <tr>
 		                            <td><?=$no++?></td>
 		                            <td><?=$row['nama']?></td>
-		                            <td><?=$row['judul']?></td>
-		                            <td><a href="assets/img/kost/<?=$row['file']?>" class="btn btn-info btn-xs fancybox">Lihat</a></td>
+		                            <td><?=$row['tersedia']?></td>
+		                            <td><a href="assets/img/kost/<?=$row['foto_kamar']?>" class="btn btn-info btn-xs fancybox">Lihat</a></td>
 		                            <td>
 		                                <div class="btn-group">
 		                                    <a href="?page=galeri&action=update&key=<?=$row['id_galeri']?>" class="btn btn-warning btn-xs">Edit</a>

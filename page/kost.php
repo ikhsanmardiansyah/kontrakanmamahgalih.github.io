@@ -11,14 +11,15 @@ if ($update) {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	if ($update) {
-		$sql = "UPDATE kost SET id_pemilik='$_POST[id_pemilik]', nama='$_POST[nama]', alamat='$_POST[alamat]', latitude='$_POST[latitude]', longitude='$_POST[longitude]', tersedia='$_POST[tersedia]', status='$_POST[status]', fasilitas='$_POST[fasilitas]', harga_3bulan='$_POST[harga_3bulan]', harga_6bulan='$_POST[harga_6bulan]', harga_pertahun='$_POST[harga_pertahun]' WHERE id_kost='$_GET[key]'";
+		$sql = "UPDATE kost SET id_pemilik='$_POST[id_pemilik]', nama='$_POST[nama]', alamat='$_POST[alamat]', tersedia='$_POST[tersedia]', status='$_POST[status]', fasilitas='$_POST[fasilitas]', harga_3bulan='$_POST[harga_3bulan]', harga_6bulan='$_POST[harga_6bulan]', harga_pertahun='$_POST[harga_pertahun]' WHERE id_kost='$_GET[key]'";
 	} else {
-		$sql = "INSERT INTO kost VALUES (NULL, '$_POST[id_pemilik]', '$_POST[nama]', '$_POST[alamat]', '$_POST[latitude]', '$_POST[longitude]', '$_POST[tersedia]', '$_POST[status]', '$_POST[fasilitas]', '$_POST[harga_3bulan]', '$_POST[harga_6bulan]', '$_POST[harga_pertahun]', NULL)";
+		$sql = "INSERT INTO kost VALUES (NULL, '$_POST[id_pemilik]', '$_POST[nama]', '$_POST[alamat]', '$_POST[tersedia]', '$_POST[status]', '$_POST[fasilitas]', '$_POST[harga_3bulan]', '$_POST[harga_6bulan]', '$_POST[harga_pertahun]')";
 	}
   if ($connection->query($sql)) {
     echo alert("Berhasil!", "?page=kost");
   } else {
 		echo alert("Gagal!", "?page=kost");
+		// var_dump($sql);
   }
 }
 
@@ -29,7 +30,7 @@ if (isset($_GET['action']) AND $_GET['action'] == 'delete') {
 ?>
 <div class="container">
 	<div class="page-header">
-		<h2>Daftar <small>kost!</small></h2>
+		<h2>Daftar <small>Penghuni Kost!</small></h2>
 	</div>
 	<!-- <div class="row">
 		<div class="col-md-12">
@@ -38,7 +39,7 @@ if (isset($_GET['action']) AND $_GET['action'] == 'delete') {
 	</div> -->
 	<!-- <hr> -->
 	<div class="row">
-		<div class="col-md-4">
+		<div class="col-md-3">
 		    <div class="panel panel-<?= ($update) ? "warning" : "info" ?>">
 		        <div class="panel-heading"><h3 class="text-center"><?= ($update) ? "EDIT" : "TAMBAH" ?></h3></div>
 		        <div class="panel-body">
@@ -98,7 +99,7 @@ if (isset($_GET['action']) AND $_GET['action'] == 'delete') {
 		        </div>
 		    </div>
 		</div>
-		<div class="col-md-8">
+		<div class="col-md-9">
 		    <div class="panel panel-info">
 		        <div class="panel-heading"><h3 class="text-center">DAFTAR</h3></div>
 		        <div class="panel-body">
@@ -107,7 +108,8 @@ if (isset($_GET['action']) AND $_GET['action'] == 'delete') {
 		                    <tr>
 		                        <th>No</th>
 								<th>Nama</th>
-		                        <th>Tersedia</th>
+		                        <th>Nomor Kamar</th>
+								<th>Fasilitas</th>
 		                        <th>Harga/3bln</th>
 		                        <th>Harga/6bln</th>
 		                        <th>Harga Pertahun</th>
@@ -123,9 +125,10 @@ if (isset($_GET['action']) AND $_GET['action'] == 'delete') {
 		                            <td><?=$no++?></td>
 		                            <td><?=$row['nama']?></td>
 		                            <td><?=$row['tersedia']?></td>
-		                            <td><?=$row['harga_3bulan']?></td>
-		                            <td><?=$row['harga_6bulan']?></td>
-		                            <td><?=$row['harga_pertahun']?></td>
+									<td><?=$row['fasilitas']?></td>
+		                            <td><?=number_format($row['harga_3bulan'],0,",",".")?></td>
+		                            <td><?=number_format($row['harga_6bulan'],0,",",".")?></td>
+		                            <td><?=number_format($row['harga_pertahun'],0,",",".")?></td>
 		                            <td><?=$row['alamat']?></td>
 		                            <td>
 		                                <div class="btn-group">

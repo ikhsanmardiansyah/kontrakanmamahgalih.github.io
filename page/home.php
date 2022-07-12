@@ -60,10 +60,9 @@
 															WHERE kost.id_kost=$_GET[key]");
 						} else {
 							$query = $connection->query("SELECT kost.*, pemilik.nama as nama_pemilik, pemilik.telepon
-															FROM kost a
+															FROM kost
 															LEFT JOIN pemilik ON kost.id_pemilik = pemilik.id_pemilik 
-															WHERE a.nama LIKE '%$_GET[nama]%' AND  status='$_GET[status]' AND  (a.`harga_pertahun` BETWEEN $_GET[min] AND $_GET[max])");
-															var_dump($query);
+															WHERE kost.nama LIKE '%$_GET[nama]%' AND  status='$_GET[status]' AND  (kost.`harga_pertahun` BETWEEN $_GET[min] AND $_GET[max])");
 						}
 					} else {
 						$query = $connection->query("SELECT kost.*, pemilik.nama as nama_pemilik, pemilik.telepon
@@ -77,13 +76,13 @@
 						<tr>
 							<td><?=$no++?></td>
 							<td><?=$row["nama"]?></td>
-							<td>Rp.<?=$row["harga_3bulan"]?>,-</td>
-							<td>Rp.<?=$row["harga_6bulan"]?>,-</td>
-							<td>Rp.<?=$row["harga_pertahun"]?>,-</td>
+							<td>Rp. <?=number_format($row['harga_3bulan'],0,",",".")?>,-</td>
+							<td>Rp. <?=number_format($row['harga_6bulan'],0,",",".")?>,-</td>
+							<td>Rp. <?=number_format($row['harga_pertahun'],0,",",".")?>,-</td>
 							<td><span class="label label-<?=($row["status"] == "Perempuan") ? "info" : "primary"?>"><?=$row["status"]?></span></td>
 							<td><?=$row["tersedia"]?></td>
 							<!-- <td><a href="?searched=click&key=<?=$row["id_kost"]?>" class="btn btn-success btn-xs">Lihat maps</a></td> -->
-							<td><?=$row['nama_pemilik'] ?> <a class="btn btn-success" href="https://wa.me/<?=$row['telepon']?>" target="_blank">Hubungi</a></td>
+							<td><?=$row['nama_pemilik'] ?> <a class="label label-success" href="https://wa.me/<?=$row['telepon']?>" target="_blank">Hubungi</a></td>
 						</tr>
 					<?php endwhile; ?>
 				</tbody>

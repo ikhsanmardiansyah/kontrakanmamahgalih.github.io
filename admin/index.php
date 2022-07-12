@@ -10,7 +10,7 @@ if (!isset($_SESSION["admin"])) {
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>KONTRAKAN MAMAH GALIH</title>
+  <title>KOST MAMAH GALIH</title>
   <script type="text/javascript">
     var IsDraggable = <?=$is=(isset($_GET["page"])) ? (($_GET["page"] == "home") ? "false" : "true") : "false"?>;
   </script>
@@ -57,7 +57,7 @@ if (!isset($_SESSION["admin"])) {
   <div class="container">
     <hr>
     <footer>
-      <p>&copy; 2021 Kost_mamahgalih.</p>
+      <p>&copy; 2021 Kost_mamahgalih</p>
     </footer>
   </div> <!-- /container -->
   <script src="../assets/js/bootstrap.min.js"></script>

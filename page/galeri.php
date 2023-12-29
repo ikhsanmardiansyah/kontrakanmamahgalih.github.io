@@ -20,9 +20,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				echo alert("Upload File Gagal!", "?page=galeri");
 				$err = true;
 			}
-			@unlink("assets/img/kost/".$row["file"]);
+			@unlink("assets/img/kost/".$row["foto_kamar"]);
 		} else {
-			$file_name = $row["file"];
+			$file_name = $row["foto_kamar"];
 		}
 	} else {
 		if (!$file) {
@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	}
 
 	if ($update) {
-		$sql = "UPDATE galeri SET id_kost=$_POST[id_kost], judul='$_POST[judul]', file='$file_name' WHERE id_galeri='$_GET[key]'";
+		$sql = "UPDATE galeri SET id_kost=$_POST[id_kost], judul='$_POST[judul]', foto_kamar='$file_name' WHERE id_galeri='$_GET[key]'";
 	} else {
 		$sql = "INSERT INTO galeri VALUES (NULL, '$_POST[id_kost]', '$_POST[judul]', '$file_name')";
 	}
@@ -47,7 +47,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	  if ($connection->query($sql)) {
 	    echo alert("Berhasil!", "?page=galeri");
 	  } else {
-			echo alert("Gagal!", "?page=galeri");
+var_dump($sql);
+			// echo alert("Gagal!", "?page=galeri");
 	  }
 	}
 }

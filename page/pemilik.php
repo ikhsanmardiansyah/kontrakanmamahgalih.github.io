@@ -8,7 +8,7 @@ if ($update) {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	if ($update) {
-		$sql = "UPDATE pemilik SET nama='$_POST[nama]', alamat='$_POST[alamat]', telepon='$_POST[telepon]', email='$_POST[email]', username='$_POST[username]', password='".md5($_POST["password"])."' WHERE id_pemilik='$_GET[key]'";
+		$sql = "UPDATE pemilik SET nama='$_POST[nama]', alamat='$_POST[alamat]', telepon='$_POST[telepon]', email='$_POST[email]', username='$_POST[username]', password='".md5($_POST["password"])."' WHERE id_pemilik='$_SESSION[id]'";
 	} else {
 		$sql = "INSERT INTO pemilik VALUES (NULL, '$_POST[nama]', '$_POST[alamat]', '$_POST[telepon]', '$_POST[email]', '$_POST[username]', '".md5($_POST["password"])."')";
 	}
@@ -76,68 +76,3 @@ if (isset($_GET['action']) AND $_GET['action'] == 'delete') {
 		</div>
 		<div class="col-md-2"></div>
 </div>
-
-
-
-<script type="text/javascript">
-$(function () {
-    Highcharts.chart('container', {
-        chart: {
-            type: 'column'
-        },
-        title: {
-            text: 'Grafik Pengunjung'
-        },
-        subtitle: {
-            text: 'eKost Yogyakarta'
-        },
-        xAxis: {
-            type: 'category',
-            labels: {
-                rotation: -45,
-                style: {
-                    fontSize: '13px',
-                    fontFamily: 'Verdana, sans-serif'
-                }
-            }
-        },
-        yAxis: {
-            min: 0,
-            title: {
-                text: 'Rata-rata'
-            }
-        },
-        legend: {
-            enabled: false
-        },
-        tooltip: {
-            pointFormat: 'Total pengunjung <b>{point.y:.1f}</b>'
-        },
-        series: [{
-            name: 'Population',
-            data: [
-							<?php
-								$data = "";
-								$sql = $connection->query("SELECT * FROM kost WHERE id_pemilik=$_SESSION[id]");
-								while ($row = $sql->fetch_assoc()) {
-									$data .= "['".$row["nama"]."', ".$row["pengunjung"]."],";
-								}
-								echo rtrim($data, ',');
-							?>
-            ],
-            dataLabels: {
-                enabled: true,
-                rotation: -90,
-                color: '#FFFFFF',
-                align: 'right',
-                format: '{point.y:.1f}', // one decimal
-                y: 10, // 10 pixels down from the top
-                style: {
-                    fontSize: '13px',
-                    fontFamily: 'Verdana, sans-serif'
-                }
-            }
-        }]
-    });
-});
-</script>

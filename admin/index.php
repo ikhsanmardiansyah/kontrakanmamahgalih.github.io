@@ -14,6 +14,7 @@ if (!isset($_SESSION["admin"])) {
   <script type="text/javascript">
     var IsDraggable = <?=$is=(isset($_GET["page"])) ? (($_GET["page"] == "home") ? "false" : "true") : "false"?>;
   </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
   <link href="../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
   <link href="../assets/css/jumbotron.css" rel="stylesheet">
@@ -37,7 +38,7 @@ if (!isset($_SESSION["admin"])) {
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.php" style="color: white;">kost_mamahgalih</a>
+        <a class="navbar-brand" href="index.php" style="color: white;font-family:cursive">KOST MAMAH GALIH <i class="fa fa-home"></i></a>
       </div>
       <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">

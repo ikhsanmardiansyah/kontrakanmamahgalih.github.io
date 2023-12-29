@@ -32,9 +32,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' AND isset($_POST["login"])) {
   <link href="assets/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
   <link href="assets/css/jumbotron.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="assets/js/ie-emulation-modes-warning.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUVLvtnzVU-tDQgUidVsAbHAGEr3VNer4&callback=initMap"></script>
   <script src="assets/js/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
   <!-- Optional, Add fancyBox for media, buttons, thumbs -->
   <link rel="stylesheet" href="assets/fancybox/source/jquery.fancybox.css" type="text/css" media="screen" />
   <link rel="stylesheet" href="assets/fancybox/source/helpers/jquery.fancybox-buttons.css" type="text/css" media="screen" />
@@ -61,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' AND isset($_POST["login"])) {
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.php" style="color: white;">KOST MAMAH GALIH</a>
+        <a class="navbar-brand" href="index.php" style="color: white;font-family:cursive">KOST MAMAH GALIH <i class="fa fa-home"></i></a>
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <?php if (isset($_SESSION['is_logged'])): ?>
@@ -72,6 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' AND isset($_POST["login"])) {
                 <li><a href="?page=pemilik">Profil</a></li>
                 <li><a href="?page=kost">Daftar Kost</a></li>
                 <li><a href="?page=galeri">Galeri</a></li>
+                <li><a href="?page=tambah_kost">Tambah Kost</a></li>
               </ul>
             </li>
             <li><a href="logout.php">Logout</a></li>
